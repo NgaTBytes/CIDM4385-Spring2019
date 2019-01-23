@@ -1,0 +1,174 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <title>Assignment 0</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">  
+    <!--I think i need to add some meta data here in order for the google search to work? 
+    I don't have any experience with this.-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">  
+    <!--using tye dye pic as background for app--> 
+    <!--created a box to contain the title of the app-->
+    <style> 
+        body
+        {
+            background-image: url("Tye Dye.png");           
+            height: 500px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+        }
+        #box
+        {
+            padding: 5px;
+            border-radius: 10px;
+            background-color:green;
+            width:300px;
+        }
+    </style>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  </head>
+  <body>            
+      <script language="JavaScript">
+        //This function activates when the Search button is clicked 
+          function validatePizza()
+          {
+            //variable to grab from the "mainform"
+              var frmOrderForm =document.getElementById("mainForm");
+              //variable to store what the end user selected as the pizza size
+              var userPizzaSize=frmOrderForm.Size.value;
+              //variable to store what the end user selected as the topping combination
+              var userPizzaTopping=frmOrderForm.Toppings.value;
+              //variable to store image
+              var image = document.createElement("IMG");      
+              //alert window will open to inform the end user of the diameter of the pizza
+              //and how many servings               
+              if(userPizzaSize=="Small")
+              {
+                alert("Your pizza is 10 inches in diameter and serves 1 to 3 people.");                  
+              }
+              else if(userPizzaSize=="Medium")
+              {
+                alert("Your pizza is 14 inches in diameter and serves 2 to 4 people.");
+              }
+              else
+              {
+                alert("Your pizza is 16 inches in diameter and serves 3 to5 people.");
+              }
+              //different pictures of pizza will appear depending on what the end user
+              //selected for toppings. 
+              if(userPizzaTopping=="Pepperoni")
+              {               
+                image.setAttribute("src", "pepperoni.png");
+                document.getElementById("placehere").appendChild(image);               
+              }
+              else if(userPizzaTopping=="Supreme")
+              {
+                image.setAttribute("src", "supreme.png");
+                document.getElementById("placehere").appendChild(image);                
+              }
+              else if(userPizzaTopping=="Meat Lovers")
+              {
+                image.setAttribute("src", "Meat Lovers.png");
+                document.getElementById("placehere").appendChild(image);
+              }
+              else if(userPizzaTopping=="Cheese Only")
+              {
+                image.setAttribute("src", "cheese.png");
+                document.getElementById("placehere").appendChild(image);
+              }
+              else
+              {
+                image.setAttribute("src", "vegetables.png");
+                document.getElementById("placehere").appendChild(image);
+              }                       
+            } 
+            //This function activates when the Sign in or Create New Account is clicked  
+            //Dr. Babb, I am not familiar with how to validate username and password without
+            //having the username and password saved in the source code. I am not familiar with
+            //hashing. 
+            function validateUser()
+            {
+                var username;
+                var password;
+                document.writeln("Username: ");                
+            }
+            function orderPizza()
+            {
+              //this function was supposed to activate when the end user clicks on Order Pizza.
+              //My intention was then the sign in or create log in screen would open if the end 
+              //user didn't already sign in or create a new account before hand. If they haven't, the
+              //end user can log in and order pizza with one click. If creating acct, then the
+              //screen will ask for all of the end user's data like name, payment type and address
+              //would automatically populate and ask if this was the same as the billing address.
+              //I was thinking maybe a loop?
+            }       
+      </script>      
+      <form id="mainForm">
+      <!--Title of the app is centered, font size 7, bold, text color white-->
+      <center>
+            <div id="box">
+            <h1><b><font size="7" color="white">Pie Times</font></b></h1>
+            </div>   
+            <h2>Your Pizza:</h2>
+      </center> 
+      <!--Align the sign in or create new account button on the right-->
+      <p style="text-align:right">
+      <input type="button" value="Sign In or Create a New Account" id="login" onclick="validateUser()">      
+    </p> 
+    <!--Align the text on the right, font size 4 for Choose size of pizza-->
+      <p style="text-align:left;"><b><font size="4">Choose size:  
+        <!--Drop down to select size of pizza-->
+      <select id="Size">
+          <option value="Small">Small</option>
+          <option value="Medium">Medium</option>
+          <option value="Large">Large</option>
+      </select>
+      </p>
+      <p>Choose toppings:
+        <!--Drop down to select the topping combinations-->
+        <select id="Toppings">
+            <option value="Pepperoni">Pepperoni</option>
+            <option value="Supreme">Supreme</option>
+            <option value="Meat Lovers">Meat Lovers</option>
+            <option value="Vegetables">Vegetables</option>
+            <option value="Cheese Only">Cheese Only</option>
+        </select></p> 
+        <!--This was supposed to be where the end user enters the address
+          so the app can do a search for pizza delivery restaurants in the area. 
+          However, I do not know how to incorporate a google search from what the
+          end user selected. I commented it out in order for the validatePizza function to 
+          work.
+        <p>Please enter the delivery address:<br>
+            <input type="text" name="street address" value="Street Number"><br>
+            <input type="text" name="city" value="City">
+            <input type="text" name="state" value="State">
+            <input type="text" name="zip code" value="Zip Code">
+        -->
+        </font></b></p>
+        <input type="button" value="Search" id="search" onclick="validatePizza()">    
+        
+        </form>   
+        <!--This was supposed to be where the best pizza delivery selection was supposed to
+        populate if I can figure out to incorporate the google search based on what the end user
+        selected.-->
+        <p><b>The lowest price pizza is: </b><input type="text" name="delivery" value="">
+        </p>
+        <p><input type="button" name="confirm" value="Confirm order?" onclick="orderPizza()"></p>
+        <center>
+          <!--placeholder where the pizza pic will populate, centered-->
+        <div id ="placehere">
+        </div>
+    </center>
+        >
+      
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  </body>
+</html>
