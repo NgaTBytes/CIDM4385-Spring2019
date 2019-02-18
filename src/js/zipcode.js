@@ -35,3 +35,4 @@ class ZipCodeInput extends React.Component {
             </div>
         );
     };
+}
